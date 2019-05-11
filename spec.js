@@ -3,35 +3,28 @@ describe('Protractor Demo App', function() {
   var secondNumber = element(by.model('second'));
   var goButton = element(by.id('gobutton'));
   var latestResult = element(by.binding('latest'));
+  var history = element.all(by.repeater('result in memory'));
+
+  function add(a, b) {
+    firstNumber.sendKeys(a);
+    secondNumber.sendKeys(b);
+    goButton.click();
+  }
 
   beforeEach(function() {
     browser.get('http://juliemr.github.io/protractor-demo/');
   });
 
-  it('should have a title', function() {
-    expect(browser.getTitle()).toEqual('Super Calculator');
-  });
+  it('should have a history', function() {
+    add(1, 2);
+    add(3, 4);
 
-  it('should add one and two', function() {
-    firstNumber.sendKeys(1);
-    secondNumber.sendKeys(2);
+    expect(history.count()).toEqual(2);
 
-    goButton.click();
+    add(5, 6);
 
-    expect(latestResult.getText()).toEqual('3');
-  });
-
-  it('should add four and six', function() {
-    firstNumber.sendKeys(4);
-    secondNumber.sendKeys(6);
-
-    goButton.click();
-    
-    expect(latestResult.getText()).toEqual('10');
-  });
-
-  it('should read the value from an input', function() {
-    firstNumber.sendKeys(1);
-    expect(firstNumber.getAttribute('value')).toEqual('1');
+    // expect(history.count()).toEqual(0); // This is wrong!
+    expect(history.last().getText()).toContain('1 + 2');
+    // expect(history.first().getText()).toContain('foo'); // This is wrong!
   });
 });
