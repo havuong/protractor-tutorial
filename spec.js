@@ -12,6 +12,9 @@ describe('Protractor Demo App', function() {
   }
 
   beforeEach(function() {
+    browser.waitForAngularEnabled(false);
+    browser.get('http://google.com/');
+    browser.waitForAngularEnabled(true);
     browser.get('http://juliemr.github.io/protractor-demo/');
   });
 
