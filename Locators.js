@@ -15,11 +15,28 @@ describe('Chain locators demo', function () {
 
     it('should add four and six', function () {
         add(4, 6);
+        add(2, 3);
+
+        /*============ Chain Locators ===========*/
 
         element(by.repeater("result in memory")).element(by.css("td:nth-child(3)")).getText().then(function (resultText) {
             console.log(resultText);
-            expect(resultText).toEqual('10');
+            // expect(resultText).toEqual('10');
         })
-    });
+
+        /*============ Element Count ===========*/
+
+        element.all(by.repeater("result in memory")).count().then(function (items) {
+            console.log("Element Count: " + items);
+        })
+
+        /*=========== List of Elements ============*/
+
+        element.all(by.repeater("result in memory")).each(function (item) {
+            item.element(by.css("td:nth-child(3)")).getText().then(function (resultText) {
+                console.log(resultText);
+            })
+        })
+    })
 
 });
