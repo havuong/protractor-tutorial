@@ -1,5 +1,5 @@
 describe('ProtoCommerce demo', () => {
-    it('Summit form and validate messages', () => {
+    xit('Summit form and validate messages', () => {
         browser.get('https://qaclickacademy.github.io/protocommerce/');
         element(by.name('name')).sendKeys('e2e testing');
         element(by.css(`input[name='email']`)).sendKeys('e2etesting@gmail.com');
@@ -20,5 +20,20 @@ describe('ProtoCommerce demo', () => {
             });
 
         });
+
+    });
+
+    it('Add product to cart', () => {
+        browser.get('https://qaclickacademy.github.io/protocommerce/');
+        element(by.linkText('Shop')).click();
+        element.all(by.tagName('app-card')).each(function (item) {
+            item.element(by.css('h4 a')).getText().then(function (title) {
+                console.log(title);
+                if (title=='Samsung Note 8') {
+                    item.element(by.buttonText('Add')).click();
+                }
+            });
+        });
+
     });
 });
