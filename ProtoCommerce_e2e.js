@@ -1,4 +1,15 @@
 describe('ProtoCommerce demo', () => {
+    function selectItem(titleItem) {
+        element.all(by.tagName('app-card')).each(function (item) {
+            item.element(by.css('h4 a')).getText().then(function (title) {
+                // console.log(title);
+                if (title == titleItem) {
+                    item.element(by.buttonText('Add')).click();
+                }
+            });
+        });
+    }
+
     xit('Summit form and validate messages', () => {
         browser.get('https://qaclickacademy.github.io/protocommerce/');
         element(by.name('name')).sendKeys('e2e testing');
@@ -26,14 +37,12 @@ describe('ProtoCommerce demo', () => {
     it('Add product to cart', () => {
         browser.get('https://qaclickacademy.github.io/protocommerce/');
         element(by.linkText('Shop')).click();
-        element.all(by.tagName('app-card')).each(function (item) {
-            item.element(by.css('h4 a')).getText().then(function (title) {
-                console.log(title);
-                if (title=='Samsung Note 8') {
-                    item.element(by.buttonText('Add')).click();
-                }
-            });
+        selectItem('Samsung Note 8');
+        selectItem('Blackberry');
+        element(by.partialLinkText('Checkout')).getText().then(function (cart) {
+            console.log(cart); // Checkout ( 2 ) \n (current)
+           var res = cart.split('('); // [ 'Checkout ', ' 2 )\n', 'current)' ]
+           expect(res[1].trim().charAt(0)).toBe('2');
         });
-
     });
 });
