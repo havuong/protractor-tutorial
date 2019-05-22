@@ -1,0 +1,28 @@
+{
+  "name": "protractor-tutorial",
+  "version": "1.0.0",
+  "description": "ProtractorTypescriptCucumberJasmine",
+  "main": "Alert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/havuong/protractor-tutorial.git"
+  },
+  "author": "HV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/havuong/protractor-tutorial/issues"
+  },
+  "homepage": "https://github.com/havuong/protractor-tutorial#readme",
+  "dependencies": {
+    "protractor": "^5.4.2",
+    "typescript": "~3.4.5",
+    "jasmine": "~3.4.0",
+    "@types/jasmine": "~3.3.12",
+    "@types/jasminewd2": "~2.0.6",
+    "ts-node": "^3.0.2",
+    "@types/node": "~12.0.2"
+  }
+}
