@@ -6,8 +6,8 @@
   "scripts": {
     "test": "protractor JSFiles/conf.js",
     "pretest": "tsc && webdriver-manager update",
-      "protractor":"./node_modules/protractor/built/cli.js"
-      
+    "cucumbertest": "protractor JSFiles/cucumberConf.js",
+    "protractor": "./node_modules/protractor/built/cli.js"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,15 @@
   },
   "homepage": "https://github.com/havuong/protractor-tutorial#readme",
   "dependencies": {
-    "protractor": "^5.4.2",
-    "typescript": "~3.4.5",
-    "jasmine": "~3.4.0",
+    "@types/cucumber": "^4.0.5",
     "@types/jasmine": "~3.3.12",
     "@types/jasminewd2": "~2.0.6",
+    "@types/node": "~12.0.2",
+    "cucumber": "^5.1.0",
+    "jasmine": "~3.4.0",
+    "protractor": "^5.4.2",
+    "protractor-cucumber-framework": "^6.1.1",
     "ts-node": "^3.0.2",
-    "@types/node": "~12.0.2"
+    "typescript": "~3.4.5"
   }
 }
