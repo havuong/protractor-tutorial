@@ -19,7 +19,7 @@ export let config: Config = {
   cucumberOpts: {
     // require step definitions
     require: [
-      './StepDefinitions/**/*.steps.js' // accepts a glob
+      './stepDefinitions/*.js' // accepts a glob
     ]
   }
 }
