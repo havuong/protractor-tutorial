@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /JSFiles
+/reports
 
 # dependencies
 /node_modules
