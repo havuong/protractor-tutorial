@@ -20,6 +20,7 @@ export let config: Config = {
     // require step definitions
     require: [
       './stepDefinitions/*.js' // accepts a glob
-    ]
+    ],
+    tags: '@caltesting'
   }
 }
