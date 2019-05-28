@@ -21,6 +21,6 @@ export let config: Config = {
     require: [
       './stepDefinitions/*.js' // accepts a glob
     ],
-    tags: '@caltesting'
+    // tags: '@caltesting'
   }
 }
