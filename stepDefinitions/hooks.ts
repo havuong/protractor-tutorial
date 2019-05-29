@@ -1,4 +1,4 @@
-import { After, Before } from 'cucumber';
+import { After, Before, Status } from 'cucumber';
 import { browser } from 'protractor';
 
 Before({ tags: "@caltesting" }, function () {
@@ -16,4 +16,12 @@ Before({ tags: "@protractorsite" }, function () {
 
 After({ tags: "@protractorsite" }, function () {
     console.log('Done protractorsite');
+});
+
+After( async function (scenario) {
+    console.log('Done protractorsite');
+    if(scenario.result.status === Status.FAILED){
+        const screenshot = await browser.takeScreenshot();
+        this.attach(screenshot,'image/png');
+    }
 });

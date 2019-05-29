@@ -29,6 +29,6 @@ Then('the output displayed should be {string}', async (string) => {
     await cal.goButton.click();
     await cal.latestResult.getText().then(function (text) {
 
-        expect(text).to.equal(string);
+        expect(string).to.equal(text);
     })
 })
